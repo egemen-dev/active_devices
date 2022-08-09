@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_08_224153) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_08_230501) do
   create_table "devices", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -23,6 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_08_224153) do
     t.string "name"
     t.boolean "is_active"
     t.string "unique_id"
+    t.boolean "is_seen"
     t.index ["email"], name: "index_devices_on_email"
     t.index ["reset_password_token"], name: "index_devices_on_reset_password_token", unique: true
   end
