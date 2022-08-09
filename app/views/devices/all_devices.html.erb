@@ -1,1 +1,16 @@
-<p>Number of devices: <%= @devices.length %></p>
+<h4>Number of devices: <%= @devices.length %></h4>
+
+
+<% if @devices.length > 0 %>
+
+  <div>
+      Activity | Name
+  </div>
+
+  <% @devices.each do |d| %>
+  <div>
+      <p><%= d.is_active ? "● true" : "○ false" %> |  <%= d.name %></p>
+  </div>
+  <% end %>
+
+<% end %>
