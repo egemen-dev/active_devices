@@ -9,30 +9,13 @@
       <%= f.text_field :name, autofocus: true %>
     </div>
 
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
-
     <div class="actions">
       <%= f.submit "Add Device" %>
     </div>
   <% end %>
 
   <%= render "devices/shared/links" %>
+  
 <% else %>
   <h2>You need to log in as user first!</h2>
 <% end %>
