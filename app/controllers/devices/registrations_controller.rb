@@ -14,7 +14,7 @@ class Devices::RegistrationsController < Devise::RegistrationsController
     email = current_user.email
     name = params[:device][:name]
     unique_id = ([*"A".."Z"]+[*"a".."z"]+[*0..9]).shuffle.sample(6).join
-    password = ([*"A".."Z"]+[*"a".."z"]+[*0..9]).shuffle.sample(8).join
+    password = ([*"A".."Z"]+[*"a".."z"]+[*0..9]).shuffle.sample(12).join
     new_dev = current_user.devices.create(
       name: name, 
       email: email, 
