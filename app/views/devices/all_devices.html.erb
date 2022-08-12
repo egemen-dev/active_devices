@@ -1,16 +1,18 @@
 <h4>Number of devices: <%= @devices.length %></h4>
 
+<div id="my_devices" data-room-id="<%=current_user.id%>">
+<%# <div id="my_devices_<%=current_user.id%>"> %>
+  <% if @devices.length > 0 %>
 
-<% if @devices.length > 0 %>
+    <div>
+        Activity | Name
+    </div>
 
-  <div>
-      Activity | Name
-  </div>
+    <% @devices.each do |d| %>
+    <div>
+        <p><%= d.is_active ? "● true" : "○ false" %> |  <%= d.name %></p>
+    </div>
+    <% end %>
 
-  <% @devices.each do |d| %>
-  <div>
-      <p><%= d.is_active ? "● true" : "○ false" %> |  <%= d.name %></p>
-  </div>
   <% end %>
-
-<% end %>
+</div>
