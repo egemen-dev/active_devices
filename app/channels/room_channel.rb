@@ -10,11 +10,12 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def online
-    ActionCable.server.broadcast "room_channel", { message: current_user.name + ' is now online' }
+    ActionCable.server.broadcast "room_channel", { message: current_device.name + ' is now online' }
   end
-
+  
   def offline
     ActionCable.server.broadcast "room_channel", { message: "I'm offline" }
+    ActionCable.server.broadcast "room_channel", { message: current_device.name + ' is logged out !!!!!!!!!!' }
   end
 
   def receive(data)

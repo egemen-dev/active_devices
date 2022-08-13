@@ -1,16 +1,16 @@
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
-    identified_by :current_user
+    identified_by :current_device
 
     def connect
-      self.current_user = find_verified_user
+      self.current_device = find_verified_device
     end
 
     private
 
-    def find_verified_user
-      if verified_user = env['warden'].user(:device)
-        verified_user
+    def find_verified_device
+      if verified_device = env['warden'].user(:device)
+        verified_device
       else
         reject_unauthorized_connection
       end
