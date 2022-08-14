@@ -1,5 +1,5 @@
 <h4>Number of devices: <%= @devices.length %></h4>
-
+<%= turbo_stream_from "dash_#{current_user.id}" %>
 
 <% if @devices.length > 0 %>
 
@@ -8,9 +8,7 @@
   </div>
 
   <% @devices.each do |d| %>
-  <div>
-      <p><%= d.is_active ? "● true" : "○ false" %> |  <%= d.name %></p>
-  </div>
+    <%= render 'devices/device', device: d %>
   <% end %>
 
 <% end %>
