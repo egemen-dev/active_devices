@@ -1,28 +1,25 @@
 class RoomChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "room_channel"
+    stream_from "online"
     online
   end
 
   def unsubscribed
-    # Any cleanup needed when channel is unsubscribed
     offline
   end
 
   def online
     ActionCable.server.broadcast "room_channel", { message: current_device.name + ' is now online' }
-    current_device.update!(is_active: true)
+    current_device.update(is_active: true)
   end
   
   def offline
+    current_device.update(is_active: false)
     ActionCable.server.broadcast "room_channel", { message: "I'm offline" }
     ActionCable.server.broadcast "room_channel", { message: current_device.name + ' is logged out !!!!!!!!!!' }
-    current_device.update!(is_active: false)
   end
 
   def receive(data)
-    ActionCable.server.broadcast("room_channel", "hello")
-    ActionCable.server.broadcast "room_channel", { message: "hello" }
   end
 end
 
