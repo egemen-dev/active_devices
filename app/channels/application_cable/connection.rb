@@ -12,7 +12,7 @@ module ApplicationCable
       if verified_device = env['warden'].user(:device)
         verified_device
       else
-        reject_unauthorized_connection
+        nil
       end
     end
   end
